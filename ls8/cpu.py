@@ -8,6 +8,21 @@ class CPU:
     def __init__(self):
         """Construct a new CPU."""
         pass
+        # create 8 registers 1 - 8, need IM, IS, SP
+        self.reg = [0] * 8
+
+        # internal registers
+        self.pc = 0  # Program counter = address of current_instructions
+        self.ir = 0  # instruction register = contains copy of current_instructions
+        self.mar = 0  # memory address register = holds memory address read/write
+        self.mdr = 0  # memory data register = holds the value to write or value to read
+        self.fl = 0  # flags
+
+        self.ram = [0] * 255
+        self.pc = 0
+
+        # opcodes
+        self.opcodes = {0b10000010: 'LDI', 0b01000111: 'PRN', 0b00000001: 'HLT'}
 
     def load(self):
         """Load a program into memory."""
