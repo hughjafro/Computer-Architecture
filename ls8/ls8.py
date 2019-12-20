@@ -3,9 +3,7 @@
 """Main."""
 
 import sys
-from cpu import *
-
-print("Hello, Chris!")
+from cpu import CPU
 
 cpu = CPU()
 

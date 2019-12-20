@@ -77,4 +77,24 @@ class CPU:
 
     def run(self):
         """Run the CPU."""
+        running = True
+        while running:
+            command = self.ram[self.pc] # don't forget this again
+            try:
+                if self.opcodes[command] == 'LDI':
+                    register = self.ram[self.pc+1]
+                    val = self.ram[self.pc+2]
+                    self.reg[register] = val
+                    self.pc += 3
+                elif self.opcodes[command] == 'PRN':
+                    register = self.ram[self.pc+1]
+                    val = self.reg[register]
+                    print(val)
+                    self.pc += 2
+                elif self.opcodes[command] == 'HLT':
+                    running = False
+
+            except KeyError as e:
+                print(f"Unknown Command {command}")
+                self.pc += 1
         pass
