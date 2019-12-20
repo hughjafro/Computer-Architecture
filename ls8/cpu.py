@@ -9,7 +9,7 @@ class CPU:
         """Construct a new CPU."""
         pass
         # create 8 registers 1 - 8, need IM, IS, SP
-        self.reg = [0] * 8
+        self.reg = [0b0] * 8
 
         # internal registers
         self.pc = 0  # Program counter = address of current_instructions
@@ -18,7 +18,7 @@ class CPU:
         self.mdr = 0  # memory data register = holds the value to write or value to read
         self.fl = 0  # flags
 
-        self.ram = [0] * 255
+        self.ram = [0b0] * 255
         self.pc = 0
 
         # opcodes
@@ -98,3 +98,11 @@ class CPU:
                 print(f"Unknown Command {command}")
                 self.pc += 1
         pass
+    
+    def ram_read(self, location):
+        """Read to RAM"""
+        return self.ram[location]
+
+    def ram_write(self, location):
+        """Write to RAM"""
+        return self.ram[location]
